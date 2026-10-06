@@ -110,7 +110,7 @@ export class MatchTest {
   static try(rule) {
     let parts = rule.match(RE_MATCH_PARTS);
     if (parts) return new MatchTest(...parts);
-    if (rule === '<all_urls>') return matchAlways; // checking it second as it's super rare
+    if (rule === '<all_urls>' || rule === 'chrome://extensions') return matchAlways; // checking it second as it's super rare
     // Report failed parts in detail
     parts = rule.match(RE_MATCH_BAD);
     throw `${ERR_BAD_PATTERN} ${rule}: ${!parts ? '' : [

@@ -121,7 +121,7 @@ async function initialize() {
   Object.assign(store, emptyStore());
   let [cached, data, [failure, reason, reason2]] = BGDATA.popup
     || await sendCmdDirectly('InitPopup');
-  if (!reason) {
+  if (!reason || data.host === 'extensions') {
     failure = '';
   } else if (reason === INJECT_INTO) {
     reason = 'noninjectable';
